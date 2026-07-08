@@ -27,9 +27,15 @@
 #endif // __arm__
 
 /* Charybdis-specific features. */
-// Automatically enable the pointer layer when moving the trackball.  See also:
-#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 500
-// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
-#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
 
-#define POINTING_DEVICE_HIRES_SCROLL_EXPONENT 1
+#ifdef POINTING_DEVICE_ENABLE
+// Automatically enable the pointer layer when moving the trackball.  See also:
+// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS`
+// - `CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD`
+#    define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#endif // POINTING_DEVICE_ENABLE
+
+#ifdef POINTING_DEVICE_ENABLE
+#    define POINTING_DEVICE_HIRES_SCROLL_ENABLE
+#    define WHEEL_EXTENDED_REPORT
+#endif
